@@ -4,7 +4,7 @@ from app.core.config import settings
 
 _client: genai.Client | None = None
 
-MODEL_NAME = "text-embedding-004"
+MODEL_NAME = "gemini-embedding-001"
 EMBEDDING_DIM = 768
 
 
