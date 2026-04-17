@@ -1,22 +1,28 @@
-from sentence_transformers import SentenceTransformer
+from google import genai
 
-_model: SentenceTransformer | None = None
+from app.core.config import settings
 
-MODEL_NAME = "all-MiniLM-L6-v2"
+_client: genai.Client | None = None
+
+MODEL_NAME = "text-embedding-004"
+EMBEDDING_DIM = 768
 
 
-def _get_model() -> SentenceTransformer:
-    global _model
-    if _model is None:
-        _model = SentenceTransformer(MODEL_NAME)
-    return _model
+def _get_client() -> genai.Client:
+    global _client
+    if _client is None:
+        _client = genai.Client(api_key=settings.GEMINI_API_KEY)
+    return _client
 
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
-    """Embed list of texts, return list of float vectors."""
-    model = _get_model()
-    embeddings = model.encode(texts, normalize_embeddings=True)
-    return [e.tolist() for e in embeddings]
+    """Embed list of texts via Google embedding API."""
+    client = _get_client()
+    result = client.models.embed_content(
+        model=MODEL_NAME,
+        contents=texts,
+    )
+    return [e.values for e in result.embeddings]
 
 
 def embed_query(query: str) -> list[float]:
