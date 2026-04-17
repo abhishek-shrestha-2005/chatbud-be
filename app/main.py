@@ -42,13 +42,16 @@ async def health():
     return {"status": "ok", "env": settings.APP_ENV}
 
 
+from app.modules.chat.router import router as chat_router  # noqa: E402
+from app.modules.documents.router import router as documents_router  # noqa: E402
+from app.modules.projects.router import router as projects_router  # noqa: E402
+
 # --- routers ---
 from app.modules.users.router import router as users_router  # noqa: E402
-from app.modules.projects.router import router as projects_router  # noqa: E402
-from app.modules.documents.router import router as documents_router  # noqa: E402
-from app.modules.chat.router import router as chat_router  # noqa: E402
 
 app.include_router(users_router)
 app.include_router(projects_router)
 app.include_router(documents_router)
 app.include_router(chat_router)
+
+# test
