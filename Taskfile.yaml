@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  dev:
+    desc: Run FastAPI app in dev mode
+    cmds:
+      - uv run main.py
+
+  up:
+    desc: Start docker-compose services (Postgres + pgvector)
+    cmds:
+      - docker compose up -d
+
+  down:
+    desc: Stop docker-compose services
+    cmds:
+      - docker compose down
+
+  db-shell:
+    desc: Open psql in the Postgres container (embedchat / embedchat)
+    cmds:
+      - docker exec -it embedchat-postgres psql -U embedchat -d embedchat
+
+  migrate:
+    desc: Create migration (task migrate message="your message")
+    requires:
+      vars: [message]
+    cmds:
+      - uv run python -m alembic revision --autogenerate -m "{{.message}}"
+
+  upgrade:
+    desc: Apply latest migrations to database
+    cmds:
+      - uv run python -m alembic upgrade head

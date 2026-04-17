@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg18
+    container_name: embedchat-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: embedchat
+      POSTGRES_PASSWORD: embedchat_dev
+      POSTGRES_DB: embedchat
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    shm_size: 256mb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U embedchat -d embedchat"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
