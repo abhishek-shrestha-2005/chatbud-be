@@ -1,0 +1,47 @@
+Overview:
+shadcn/ui is a modern, open-source collection of beautifully designed UI components built for React applications. It is not a traditional component library you install as a dependency—instead, you copy components directly into your project, giving you full control over customization and code.
+
+Core Concepts:
+
+Copy-Paste Components:
+Unlike libraries like Material UI or Chakra UI, shadcn/ui lets developers add components as actual code files into their project.
+Built on Tailwind CSS:
+It uses Tailwind CSS for styling, making it highly customizable and utility-driven.
+Uses Radix UI Primitives:
+Components are powered by Radix UI, ensuring accessibility and good UX by default.
+Fully Customizable:
+Since components live in your codebase, you can modify structure, styles, and behavior without limitations.
+
+Key Features:
+
+Accessible and keyboard-friendly components
+Dark mode support out of the box
+Consistent design system
+Works seamlessly with Next.js
+TypeScript support
+
+Common Components:
+
+Button
+Card
+Dialog (modal)
+Dropdown Menu
+Input
+Toast
+Sheet (sidebar)
+
+When to Use:
+
+When you want full control over UI code
+When building scalable design systems
+When using Tailwind CSS already
+When you prefer flexibility over strict frameworks
+
+When NOT Ideal:
+
+If you want plug-and-play UI without touching code
+If your team prefers strict design systems with enforced rules
+
+Simple Explanation (for chatbot tone):
+
+shadcn/ui is like a toolbox where you take the tools (components) and keep them in your own workshop (project), instead of borrowing them from someone else every time.

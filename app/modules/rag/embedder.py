@@ -5,7 +5,7 @@ from app.core.config import settings
 _client: genai.Client | None = None
 
 MODEL_NAME = "gemini-embedding-001"
-EMBEDDING_DIM = 768
+EMBEDDING_DIM = 3072
 
 
 def _get_client() -> genai.Client:

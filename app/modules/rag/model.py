@@ -4,7 +4,7 @@ from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column
 from sqlmodel import Field, SQLModel
 
-EMBEDDING_DIM = 768  # Google text-embedding-004
+EMBEDDING_DIM = 3072  # Google gemini-embedding-001
 
 
 class Chunk(SQLModel, table=True):
