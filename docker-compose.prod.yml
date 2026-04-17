@@ -43,6 +43,7 @@ services:
     depends_on:
       - app
     networks:
+      - internal
       - web
 
   certbot:
